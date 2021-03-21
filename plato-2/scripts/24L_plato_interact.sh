@@ -4,9 +4,9 @@ set -eux
 export CUDA_VISIBLE_DEVICES=0
 
 # change to Knover working directory
-SCRIPT=`realpath "$0"`
-KNOVER_DIR=`dirname ${SCRIPT}`/../..
-cd $KNOVER_DIR
+# SCRIPT=`realpath "$0"`
+# KNOVER_DIR=`dirname ${SCRIPT}`/../..
+# cd $KNOVER_DIR
 
 model_size=24L
 
@@ -39,4 +39,5 @@ python -u \
     --init_pretraining_params ${init_params} \
     --spm_model_file ${spm_model_file} \
     $infer_args \
-    --config_path ${config_path}
+    --config_path ${config_path} \
+    --use_cpu

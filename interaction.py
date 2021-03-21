@@ -48,7 +48,10 @@ def interact(args):
     """
     dev_count = 1
     gpu_id = 0
-    place = fluid.CUDAPlace(gpu_id)
+    if args.use_cpu:
+        place = fluid.CPUPlace()
+    else:
+        place = fluid.CUDAPlace(gpu_id)
 
     task = DialogGeneration(args)
     model = models.create_model(args, place)
@@ -79,5 +82,5 @@ def interact(args):
 
 if __name__ == "__main__":
     args = setup_args()
-    check_cuda(True)
+    check_cuda(False)
     interact(args)

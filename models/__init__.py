@@ -59,6 +59,9 @@ def add_cmdline_args(parser):
     # Config
     group.add_argument("--config_path", type=str, required=True)
 
+    # Device
+    group.add_argument("--use_cpu", action='store_true', required=False)
+
     # Model related.
     args, _ = parser.parse_known_args()
     if args.model not in MODEL_REGISTRY:
